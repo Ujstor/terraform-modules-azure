@@ -7,6 +7,10 @@ resource "random_string" "resource_code" {
 resource "azurerm_resource_group" "tfstate" {
   name     = var.resource_group_name
   location = var.resource_group_location
+
+  tags = {
+    environment = "prod"
+  }
 }
 
 resource "azurerm_storage_account" "tfstate" {
@@ -18,7 +22,7 @@ resource "azurerm_storage_account" "tfstate" {
   allow_nested_items_to_be_public = false
 
   tags = {
-    environment = "all"
+    environment = "prod"
   }
 }
 
